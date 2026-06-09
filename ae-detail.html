@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AE Account Book · Cognition</title>
+<link rel="stylesheet" href="ae-dashboard.css"/>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="sb-brand"><img src="assets/cognition-wordmark.png" alt="Cognition"/></div>
+    <div class="sb-group">GTM</div>
+    <a class="sb-item" href="index.html">Readout</a>
+    <a class="sb-item" href="#">Forecast</a>
+    <a class="sb-item" href="#">Accounts</a>
+    <div class="sb-group">Sales</div>
+    <a class="sb-item active" href="ae-dashboard.html">AE Targets</a>
+    <a class="sb-item" href="#">Commission</a>
+    <a class="sb-item" href="#">Pipeline</a>
+    <div class="sb-group">Operations</div>
+    <a class="sb-item" href="#">Consumption</a>
+    <a class="sb-item" href="#">Pricing</a>
+  </aside>
+  <div class="main">
+    <div class="topbar">
+      <div>
+        <div class="crumbs"><a href="ae-dashboard.html">Sales</a> / <a href="ae-dashboard.html">AE Targets</a> / <span id="crumb-ae">AE</span></div>
+        <div class="h-title"><span id="ae-name">Account Book</span> <span class="muted" style="font-weight:400">· <span id="ae-count"></span></span></div>
+      </div>
+      <div class="topbar-right">
+        <a class="btn" href="ae-dashboard.html">← Back</a>
+        <button class="btn">Export</button>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="ctl">
+        <label>Period</label>
+        <div class="daterange">April 1 – April 30, 2026</div>
+      </div>
+      <div class="ctl">
+        <label>As of (play the month)</label>
+        <div class="asof-wrap">
+          <span class="live-dot"></span>
+          <button class="play-btn" id="play-btn" title="Play through the month">▶</button>
+          <input id="asof" type="range" min="1" max="30" value="5"/>
+          <span class="asof-badge" id="asof-label">April 5, 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="legend">Accounts grouped by <strong>Deal Phase</strong> (lifecycle order); within each phase sorted by Last Month ACU ▼. Targets in ACUs · Revenue MTD = ACU MTD × unit price.</div>
+
+    <div class="tablewrap">
+      <div class="card">
+        <table>
+          <thead>
+            <tr>
+              <th colspan="2">Account</th>
+              <th>Last Month ACU</th>
+              <th>ACU MTD</th>
+              <th>ACU Pacing</th>
+              <th>ACU Target</th>
+              <th>ACU Goal %</th>
+              <th>Unit Pricing</th>
+              <th>Revenue MTD</th>
+            </tr>
+          </thead>
+          <tbody id="detail-body"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="ae-dashboard.js"></script>
+</body>
+</html>
