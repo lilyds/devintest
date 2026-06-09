@@ -48,11 +48,11 @@
 <span class="exercise-tag">EXERCISE 1</span>
 <h2 class="exercise-title">Usage Forecast &amp; Account Targets</h2>
 </div>
-<div class="callout"><span class="callout-label">The headline:</span> 23.7M ACUs in May, 37M in June, 33M in July, led ~88% by Devin. We back this with a tested model and a stage-aware way to set targets.</div>
+<div class="callout"><span class="callout-label">Forecast:</span> 23.7M ACUs in May, 37M in June, 33M in July, led ~88% by Devin. We back this with a tested model and a stage-aware way to set targets.</div>
 <h3 class="sub-head">Summary</h3>
-<p>It is an account×product weekly model (719 series): each account is projected from its own recent momentum, capped and faded. Out-of-sample backtesting puts near-term error at 17% (1-week) and 25% (4-week) — better than a trailing-average method and a naive baseline. The quarter-end is shown as a range (July 24.5M–63.6M) because consumption volatility is genuinely high.</p>
+<p>It is an account x product weekly model (719 series): each account is projected from its own recent momentum, capped and faded. Out-of-sample backtesting puts near-term error at 17% (1-week) and 25% (4-week) — better than a trailing-average method and a naive baseline. The quarter-end is shown as a range (July 24.5M–63.6M) because consumption volatility is genuinely high.</p>
 <h3 class="sub-head">Model</h3>
-<ul class='bullets'><li><strong>Grain:</strong> enterprise × product × week, anchored to each account's last actual week (forecast is continuous off 4.92M).</li><li><strong>Growth:</strong> exponentially-weighted recent week-over-week, capped at +12% / −15%, faded 15%/week toward maturity.</li><li><strong>Scenarios:</strong> bear / base / bull flex the growth cap and decay, bracketing a realistic range rather than implying false precision.</li><li><strong>Data:</strong> 26 weeks cleaned to 7,781 valid rows across 571 enterprises; enterprise_id is the key (~27% of rows lack a Salesforce ID).</li></ul>
+<ul class='bullets'><li><strong>Grain:</strong> enterprise x product x week, anchored to each account's last actual week (forecast is continuous off 4.92M).</li><li><strong>Growth:</strong> exponentially-weighted recent week-over-week, capped at +12% / −15%, faded 15%/week toward maturity.</li><li><strong>Scenarios:</strong> bear / base / bull flex the growth cap and decay, bracketing a realistic range rather than implying false precision.</li><li><strong>Data:</strong> 26 weeks cleaned to 7,781 valid rows across 571 enterprises; enterprise_id is the key (~27% of rows lack a Salesforce ID).</li></ul>
 <h3 class="sub-head">Forecast output</h3>
 <div class="table-wrap"><table class="data-table">
 <thead><tr>
@@ -91,7 +91,8 @@
 <figure class="figure"><img src="assets/figure-1-forecast.png" alt="Figure 1 — actual weekly usage and the 13-week forecast (base, with bear–bull range)." loading="lazy" /><figcaption>Figure 1 — actual weekly usage and the 13-week forecast (base, with bear–bull range).</figcaption></figure>
 <p>Growth is led by Devin (~88% of volume), with Windsurf the fastest-growing minority product. June has five forecast week-starts versus four in May and July, so month-to-month totals should be normalized to weekly run-rate before driving quota.</p>
 <h3 class="sub-head">Goal-setting framework</h3>
-<p>The forecast is the baseline target; a stage stretch is layered on to set the sales/CS goal. Targets are owned per account, rolled up to 10 AEs, and tracked monthly against actuals. The lever differs by stage: for Production, the goal is a hard ACU consumption number. For earlier stages — Demo, POC, UAT — the most important outcome is moving the account to the next phase, not an ACU quota; phase progression is the leading indicator and consumption follows. So pre-Production accounts carry a milestone goal (“move to next phase”), with ACUs tracked but not quota’d; accounts with prior usage but no current signal default to ~1.1× recent actuals so reps still have a number.</p>
+<p><a class="demo-btn" href="ae-dashboard.html">Sales Targets Demo</a></p>
+<p>The forecast is the baseline target; a stage stretch is layered on to set the sales/CS goal. Targets are owned per account, rolled up to 10 AEs, and tracked monthly against actuals. The lever differs by stage: for Production, the goal is a hard ACU consumption number. For earlier stages — Demo, POC, UAT — the most important outcome is moving the account to the next phase, not an ACU quota; phase progression is the leading indicator and consumption follows. So pre-Production accounts carry a milestone goal (“move to next phase”), with ACUs tracked but not quota’d; accounts with prior usage but no current signal default to ~1.1x recent actuals so reps still have a number.</p>
 <p>Incentives should reward that behavior: a blend of milestone-based commission (stage advancement and key activations), ACU-consumption commission (the core lever for Production), and activation-based commission (a per-seat reward for each newly activated user) — surfaced on a real-time dashboard visible across the whole sales org, and extended beyond AEs to Forward-Deployed Engineers and CS, who drive activation and expansion.</p>
 <h3 class="sub-head">Accuracy</h3>
 <p>Accuracy is measured out-of-sample at the weekly-total level, volume-weighted (WAPE), because the top 10 accounts are 69% of volume. The selected model lands at 17% (1-week) and 25% (4-week) error, beating a trailing-average method (23% / 26%) and a naive random walk (17% / 36%).</p>
@@ -135,7 +136,7 @@
 <div class="callout"><span class="callout-label">Recommendation:</span> Modify. Approving a flat $1.50/ACU is survivable — but we should concede toward it only in exchange for term, commitment, and growth.</div>
 <p class="lead"><strong>Summary.</strong> Customer A’s current contract ends June 2027; this memo covers the renewal that takes effect July 2027. Customer A is our single largest and most strategic account. It is also cheap to serve, at $0.59/ACU, so even the flat $1.50/ACU the customer is pushing for still earns ~61% gross margin. Approving $1.50 is therefore not the end of the world. We recommend conceding toward $1.50 only in exchange for term, commitment, and growth. Two structures follow: a 5-year lock-in (“Play the Long Game”) and a 12-month volume deal (“A Good Compromise”).</p>
 <h3 class="sub-head">1. Margin analysis — current vs. proposed</h3>
-<p>Today’s unit economics (April 2026 actuals) frame the trade-off: cost to serve is only $0.59/ACU, so break-even sits far below either rate and $1.50 is still ~2.5× cost. The discount is a margin-share decision, not a viability one.</p>
+<p>Today’s unit economics (April 2026 actuals) frame the trade-off: cost to serve is only $0.59/ACU, so break-even sits far below either rate and $1.50 is still ~2.5x cost. The discount is a margin-share decision, not a viability one.</p>
 <div class="table-wrap"><table class="data-table">
 <thead><tr>
 <th>Scenario (April 2026 actuals)</th>
@@ -271,10 +272,10 @@
 <h2 class="exercise-title">Pricing: ACU vs. Tokens</h2>
 </div>
 <div class="callout"><span class="callout-label">Recommendation:</span> Keep the ACU — but earn it with product. Don’t move to token-based pricing. This is a product-roadmap decision, not a pricing one.</div>
-<p class="lead"><strong>Summary:</strong> Today the ACU is ~just repackaged token cost (ACU ≈ 1.94 × token cost − 0.39; R² = 0.97) — the “ECU camp,” where a proprietary unit adds little. The answer is not to surrender to tokens, which are commoditizing and would make Devin a replaceable utility, but to invest in product depth that grows the non-LLM share until the ACU is a true value-based unit like Snowflake’s credit or Databricks’ DBU. This is a roadmap decision, not a pricing one.</p>
+<p class="lead"><strong>Summary:</strong> Today the ACU is ~just repackaged token cost (ACU ≈ 1.94 x token cost − 0.39; R² = 0.97) — the “ECU camp,” where a proprietary unit adds little. The answer is not to surrender to tokens, which are commoditizing and would make Devin a replaceable utility, but to invest in product depth that grows the non-LLM share until the ACU is a true value-based unit like Snowflake’s credit or Databricks’ DBU. This is a roadmap decision, not a pricing one.</p>
 <h3 class="sub-head">Today, the ACU is essentially repackaged token cost</h3>
-<p>Across ~118k April sessions, ACU ≈ 1.94 × token cost − 0.39 (R² = 0.97); the fit holds across customers, channels, and workloads, and cost is ~86% tokens / ~14% VM. On current economics the ACU abstracts little that tokens don’t already capture — weak standalone defensibility.</p>
-<figure class="figure"><img src="assets/figure-2-acu-token.png" alt="Figure 2 — billed ACUs track token cost almost exactly across ~118k April sessions (ACU ≈ 1.94 × token cost, R² = 0.97)." loading="lazy" /><figcaption>Figure 2 — billed ACUs track token cost almost exactly across ~118k April sessions (ACU ≈ 1.94 × token cost, R² = 0.97).</figcaption></figure>
+<p>Across ~118k April sessions, ACU ≈ 1.94 x token cost − 0.39 (R² = 0.97); the fit holds across customers, channels, and workloads, and cost is ~86% tokens / ~14% VM. On current economics the ACU abstracts little that tokens don’t already capture — weak standalone defensibility.</p>
+<figure class="figure"><img src="assets/figure-2-acu-token.png" alt="Figure 2 — billed ACUs track token cost almost exactly across ~118k April sessions (ACU ≈ 1.94 x token cost, R² = 0.97)." loading="lazy" /><figcaption>Figure 2 — billed ACUs track token cost almost exactly across ~118k April sessions (ACU ≈ 1.94 x token cost, R² = 0.97).</figcaption></figure>
 <h3 class="sub-head">But tokens are commoditizing — pricing on them erodes our premium</h3>
 <p>Flagship token prices are in free-fall (GPT-4o −50% in five months; DeepSeek −50%+ in 2025) and converging toward a utility. Billing in tokens anchors our value to a shrinking, directly comparable commodity — inviting price-shopping and making Devin look like a metered LLM reseller rather than a premium platform.</p>
 <h3 class="sub-head">The real question is product, not pricing</h3>
@@ -287,7 +288,7 @@
 </tr></thead><tbody>
 <tr>
 <td>Pros</td>
-<td><ul class='cell-list'><li>Legible &amp; comparable — the standard customers and Gartner ask for.</li><li>Low-risk today — ACU ≈ 1.94 × token cost − 0.39 (R²=0.97); clean translation exists.</li></ul></td>
+<td><ul class='cell-list'><li>Legible &amp; comparable — the standard customers and Gartner ask for.</li><li>Low-risk today — ACU ≈ 1.94 x token cost − 0.39 (R²=0.97); clean translation exists.</li></ul></td>
 <td><ul class='cell-list'><li>Revenue defensibility — resists token price wars; protects margin as LLM prices fall.</li><li>Captures non-LLM cost — includes the ~14% (and growing) infra wedge.</li><li>More premium product — a value-based platform, not a metered LLM reseller.</li></ul></td>
 </tr>
 <tr>
