@@ -3,143 +3,313 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog — Dimension | Tech-enabled Waste Management</title>
-  <meta name="description" content="Insights on waste management, recycling, sustainability and the circular economy from Dimension." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <title>Onsite — GTM Operations · Cognition Readout</title>
+  <meta name="description" content="Onsite GTM Operations readout: usage forecasting, deal structuring and pricing strategy. Candidate: Lily Shen, June 2026." />
+  <link rel="stylesheet" href="readout.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#top">Skip to content</a>
 
-  <header class="site-header" id="siteHeader">
-    <div class="container header-inner">
-      <a class="brand" href="#" aria-label="Dimension home">
-        <img class="brand-logo" src="logo.png" alt="Dimension" width="2478" height="360" />
+  <header class="topbar" id="topbar">
+    <div class="topbar-inner">
+      <a class="wordmark" href="#top" aria-label="Cognition">
+        <img src="assets/cognition-wordmark.png" alt="Cognition" />
       </a>
-
-      <nav class="main-nav" aria-label="Primary">
-        <a href="#">Services</a>
-        <a href="#">Business</a>
-        <a href="#">Providers</a>
-        <a href="#">Sustainability</a>
-        <a href="#">About</a>
+      <nav class="top-nav" aria-label="Sections">
+        <a href="#exercise-1">Forecast</a>
+        <a href="#exercise-2">Renewal</a>
+        <a href="#exercise-3">Pricing</a>
       </nav>
-
-      <div class="header-actions">
-        <a class="btn btn-ghost" href="#">Log In</a>
-        <a class="btn btn-primary" href="#">Book Now</a>
-      </div>
-
-      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
     </div>
+    <div class="progress" id="progress"></div>
   </header>
 
-  <main id="main">
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero-inner">
-        <p class="eyebrow">The Dimension Blog</p>
-        <h1>Smarter waste, <span>a cleaner planet.</span></h1>
-        <p class="hero-sub">Field notes, research and company news on recycling, compliance and the circular economy — from the team rethinking how the world handles waste.</p>
-        <form class="search" role="search" id="searchForm">
-          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          <input type="search" id="searchInput" placeholder="Search articles…" aria-label="Search articles" />
-        </form>
-      </div>
-    </section>
-
-    <div class="container">
-      <!-- Featured -->
-      <section class="featured" aria-labelledby="featured-title">
-        <article class="featured-card">
-          <div class="featured-media" style="--g1:#0f5132;--g2:#2f9e6f">
-            <span class="tag tag-light">Company News</span>
-          </div>
-          <div class="featured-body">
-            <h2 id="featured-title"><a href="#">Dimension Selected in Major RFP Contract with State of California for PPE Waste Removal</a></h2>
-            <p>SAN FRANCISCO, CA — Dimension, the tech-enabled waste management company, has been awarded a Master Service Agreement with the State of California through the Department of General Services, providing waste removal services to state and local agencies.</p>
-            <div class="post-meta">
-              <span class="author"><span class="avatar" aria-hidden="true">D</span> Dimension Team</span>
-              <span class="dot" aria-hidden="true">•</span>
-              <time datetime="2024-03-12">Mar 12, 2024</time>
-              <span class="dot" aria-hidden="true">•</span>
-              <span>5 min read</span>
-            </div>
-            <a class="read-link" href="#">Read the announcement <span aria-hidden="true">→</span></a>
-          </div>
-        </article>
-      </section>
-
-      <!-- Filters -->
-      <section class="toolbar" aria-label="Filter articles">
-        <div class="chips" id="chips" role="tablist">
-          <button class="chip is-active" data-filter="all" role="tab" aria-selected="true">All</button>
-          <button class="chip" data-filter="company" role="tab" aria-selected="false">Company News</button>
-          <button class="chip" data-filter="recycling" role="tab" aria-selected="false">Recycling</button>
-          <button class="chip" data-filter="sustainability" role="tab" aria-selected="false">Sustainability</button>
-          <button class="chip" data-filter="business" role="tab" aria-selected="false">Business</button>
-          <button class="chip" data-filter="guides" role="tab" aria-selected="false">Guides</button>
-        </div>
-        <p class="result-count" id="resultCount" aria-live="polite"></p>
-      </section>
-
-      <!-- Grid -->
-      <section class="grid" id="postGrid" aria-label="Articles">
-        <!-- cards injected by script.js -->
-      </section>
-
-      <p class="empty-state" id="emptyState" hidden>No articles match your search. Try a different term.</p>
-
-      <!-- Newsletter -->
-      <section class="newsletter">
-        <div class="newsletter-inner">
-          <div>
-            <h2>Stay in the loop</h2>
-            <p>Get the latest on recycling, compliance and sustainability — straight to your inbox. No spam, ever.</p>
-          </div>
-          <form class="newsletter-form" id="newsletterForm">
-            <input type="email" placeholder="you@company.com" aria-label="Email address" required />
-            <button class="btn btn-primary" type="submit">Subscribe</button>
-          </form>
-        </div>
-      </section>
+  <main class="sheet" id="main">
+  <section class="cover" id="top">
+    <p class="eyebrow">Onsite — GTM Operations</p>
+    <h1 class="cover-title">Usage Forecasting <span class="sep">·</span> Deal Structuring <span class="sep">·</span> Pricing Strategy</h1>
+    <div class="cover-meta">
+      <span><strong>Lily Shen</strong></span>
+      <span class="dot">•</span>
+      <span>June 2026</span>
     </div>
+    <div class="agenda">
+      <p class="agenda-head">Agenda</p>
+      <ol class="agenda-list">
+      <li><a href="#exercise-1"><span class="agenda-num">1</span><span>Usage forecast &amp; account targets</span></a></li>
+      <li><a href="#exercise-2"><span class="agenda-num">2</span><span>Customer A renewal</span></a></li>
+      <li><a href="#exercise-3"><span class="agenda-num">3</span><span>Pricing: ACU vs. tokens</span></a></li>
+      </ol>
+    </div>
+  </section>
+
+<section class="exercise" id="exercise-1">
+<div class="exercise-head">
+<span class="exercise-tag">EXERCISE 1</span>
+<h2 class="exercise-title">Usage Forecast &amp; Account Targets</h2>
+</div>
+<div class="callout"><span class="callout-label">The headline:</span> 23.7M ACUs in May, 37M in June, 33M in July, led ~88% by Devin. We back this with a tested model and a stage-aware way to set targets.</div>
+<h3 class="sub-head">Summary</h3>
+<p>It is an account×product weekly model (719 series): each account is projected from its own recent momentum, capped and faded. Out-of-sample backtesting puts near-term error at 17% (1-week) and 25% (4-week) — better than a trailing-average method and a naive baseline. The quarter-end is shown as a range (July 24.5M–63.6M) because consumption volatility is genuinely high.</p>
+<h3 class="sub-head">Model</h3>
+<ul class='bullets'><li><strong>Grain:</strong> enterprise × product × week, anchored to each account's last actual week (forecast is continuous off 4.92M).</li><li><strong>Growth:</strong> exponentially-weighted recent week-over-week, capped at +12% / −15%, faded 15%/week toward maturity.</li><li><strong>Scenarios:</strong> bear / base / bull flex the growth cap and decay, bracketing a realistic range rather than implying false precision.</li><li><strong>Data:</strong> 26 weeks cleaned to 7,781 valid rows across 571 enterprises; enterprise_id is the key (~27% of rows lack a Salesforce ID).</li></ul>
+<h3 class="sub-head">Forecast output</h3>
+<div class="table-wrap"><table class="data-table">
+<thead><tr>
+<th>Month</th>
+<th>Base Forecast</th>
+<th>Devin</th>
+<th>CLI</th>
+<th>Windsurf</th>
+<th>Sales/CS Target</th>
+</tr></thead><tbody>
+<tr>
+<td>May 2026</td>
+<td>23.7M</td>
+<td>20.8M</td>
+<td>449k</td>
+<td>2.5M</td>
+<td>26.0M</td>
+</tr>
+<tr>
+<td>June 2026</td>
+<td>37.0M</td>
+<td>32.4M</td>
+<td>692k</td>
+<td>3.8M</td>
+<td>40.6M</td>
+</tr>
+<tr>
+<td>July 2026</td>
+<td>33.3M</td>
+<td>29.2M</td>
+<td>616k</td>
+<td>3.5M</td>
+<td>36.6M</td>
+</tr>
+</tbody></table></div>
+<figure class="figure"><img src="assets/figure-1-forecast.png" alt="Figure 1 — actual weekly usage and the 13-week forecast (base, with bear–bull range)." loading="lazy" /><figcaption>Figure 1 — actual weekly usage and the 13-week forecast (base, with bear–bull range).</figcaption></figure>
+<p>Growth is led by Devin (~88% of volume), with Windsurf the fastest-growing minority product. June has five forecast week-starts versus four in May and July, so month-to-month totals should be normalized to weekly run-rate before driving quota.</p>
+<h3 class="sub-head">Goal-setting framework</h3>
+<p>The forecast is the baseline target; a stage stretch is layered on to set the sales/CS goal. Targets are owned per account, rolled up to 10 AEs, and tracked monthly against actuals. The lever differs by stage: for Production, the goal is a hard ACU consumption number. For earlier stages — Demo, POC, UAT — the most important outcome is moving the account to the next phase, not an ACU quota; phase progression is the leading indicator and consumption follows. So pre-Production accounts carry a milestone goal (“move to next phase”), with ACUs tracked but not quota’d; accounts with prior usage but no current signal default to ~1.1× recent actuals so reps still have a number.</p>
+<p>Incentives should reward that behavior: a blend of milestone-based commission (stage advancement and key activations), ACU-consumption commission (the core lever for Production), and activation-based commission (a per-seat reward for each newly activated user) — surfaced on a real-time dashboard visible across the whole sales org, and extended beyond AEs to Forward-Deployed Engineers and CS, who drive activation and expansion.</p>
+<h3 class="sub-head">Accuracy</h3>
+<p>Accuracy is measured out-of-sample at the weekly-total level, volume-weighted (WAPE), because the top 10 accounts are 69% of volume. The selected model lands at 17% (1-week) and 25% (4-week) error, beating a trailing-average method (23% / 26%) and a naive random walk (17% / 36%).</p>
+<h3 class="sub-head">Key trends</h3>
+<div class="table-wrap"><table class="data-table">
+<thead><tr>
+<th>Trend</th>
+<th>Evidence</th>
+<th>GTM implication</th>
+</tr></thead><tbody>
+<tr>
+<td>Revenue is concentrated</td>
+<td>Top 1 / 5 / 10 accounts = 21.6% / 52.3% / 69.1% of recent volume.</td>
+<td>Safeguarding revenue starts with the top 10 — manage them individually, by name.</td>
+</tr>
+<tr>
+<td>Revenue is volatile, driven by big accounts</td>
+<td>The top-10 accounts swing ~±80% week-to-week vs ~±41% for everyone else; ~60% of each weekly swing comes from just 3 accounts.</td>
+<td>Dampen volatility by graduating large accounts into Production (a steadier stage) and growing a mid-market base.</td>
+</tr>
+<tr>
+<td>Product mix is broadening</td>
+<td>Devin 100% → 87.8% of volume; non-Devin 6.9% → 12.2% over 8 weeks; multi-product accounts 0 → 166.</td>
+<td>Build a per-product success journey, not a Devin-only motion.</td>
+</tr>
+<tr>
+<td>Breadth and intensity both grow</td>
+<td>Active accounts 222 → 416; usage per account 10k → 44k.</td>
+<td>Study the “happy accounts” — why activation spread across their teams and orgs — and replicate it.</td>
+</tr>
+</tbody></table></div>
+<h3 class="sub-head">Operating cadence</h3>
+<ul class='bullets'><li><strong>Refit weekly —</strong> the model is built to be re-run as new actuals land; targets and scenarios update with it.</li><li>Review the top-10 accounts individually; at 69% of volume they drive both the forecast and its risk.</li></ul>
+</section>
+
+<section class="exercise" id="exercise-2">
+<div class="exercise-head">
+<span class="exercise-tag">EXERCISE 2</span>
+<h2 class="exercise-title">Customer A Renewal</h2>
+</div>
+<div class="callout"><span class="callout-label">Recommendation:</span> Modify. Approving a flat $1.50/ACU is survivable — but we should concede toward it only in exchange for term, commitment, and growth.</div>
+<p class="lead"><strong>Summary.</strong> Customer A’s current contract ends June 2027; this memo covers the renewal that takes effect July 2027. Customer A is our single largest and most strategic account. It is also cheap to serve, at $0.59/ACU, so even the flat $1.50/ACU the customer is pushing for still earns ~61% gross margin. Approving $1.50 is therefore not the end of the world. We recommend conceding toward $1.50 only in exchange for term, commitment, and growth. Two structures follow: a 5-year lock-in (“Play the Long Game”) and a 12-month volume deal (“A Good Compromise”).</p>
+<h3 class="sub-head">1. Margin analysis — current vs. proposed</h3>
+<p>Today’s unit economics (April 2026 actuals) frame the trade-off: cost to serve is only $0.59/ACU, so break-even sits far below either rate and $1.50 is still ~2.5× cost. The discount is a margin-share decision, not a viability one.</p>
+<div class="table-wrap"><table class="data-table">
+<thead><tr>
+<th>Scenario (April 2026 actuals)</th>
+<th>Monthly Rev</th>
+<th>Gross Margin $</th>
+<th>GM %</th>
+<th>Blended $/ACU</th>
+</tr></thead><tbody>
+<tr>
+<td>Current ($2.50 in-cap + $3.00 overage)</td>
+<td>$3.43M</td>
+<td>$2.65M</td>
+<td>77%</td>
+<td>$2.62</td>
+</tr>
+<tr>
+<td>Customer ask — flat $1.50</td>
+<td>$1.96M</td>
+<td>$1.19M</td>
+<td>61%</td>
+<td>$1.50</td>
+</tr>
+</tbody></table></div>
+<h3 class="sub-head">2. Product mix &amp; unmetered products</h3>
+<p>Customer A is ~100% Devin, so all revenue rides one SKU with no diversification cushion. Review and Ask/DeepWiki are set to a 0 scalar (free) and unused today, so they create no margin drag now; they are a forward cost risk as the account scales and an unused expansion lever we can trade for rate or commitment rather than give away silently.</p>
+<h3 class="sub-head">3. Benchmarking against the portfolio</h3>
+<p>Among comparable accounts (Majors, Devin-heavy), the median effective rate is $2.50/ACU; $1.50 would place Customer A near the bottom decile. Their cost to serve is below the cohort median, so there is no cost basis for pricing them under peers. They are already the #1 account in the portfolio — which is why the rate we set here will echo across every other negotiation.</p>
+<h3 class="sub-head">4. Recommendation: modify (approval is acceptable; negotiate first)</h3>
+<p>We recommend modify. At 61% margin even on flat $1.50, approving the ask is defensible and not dangerous — the deal team should feel they have room. But we should still negotiate: an unconditional cut forfeits a large share of margin and anchors future renewals to our lowest rate, while outright rejection risks a large, efficient, growing account over a discount we can afford. The right path is to grant a $1.50 (or lower marginal) rate in return for a multi-year commitment and volume.</p>
+<h3 class="sub-head">5. Two recommended structures</h3>
+<p>We propose two structures — pick based on whether we prioritize certainty (lock-in) or balanced margin:</p>
+<div class="table-wrap"><table class="data-table">
+<thead><tr>
+<th>Option</th>
+<th>Structure</th>
+<th>Modeled economics</th>
+<th>Margin</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Option 1</strong><span class="cell-sub">“Play the Long Game”</span></td>
+<td>5-year term (Jul ’27–Jun ’32). Flat $1.50/ACU + annual minimum commitments set at our conservative base forecast.</td>
+<td>~$472M 5-yr contracted floor; protected through 2032.</td>
+<td>61%</td>
+</tr>
+<tr>
+<td><strong>Option 2</strong><span class="cell-sub">“A Good Compromise”</span></td>
+<td>Standard 12-month term (Jul ’27–Jun ’28). Volume-graduated rate: first 1M ACU/mo @ $2.50; 1–2M @ $2.00; 2–4M @ $1.75; above 4M @ $1.50. </td>
+<td>Year-1 revenue ≈ $125M (blended ≈ $1.86/ACU). </td>
+<td>68%</td>
+</tr>
+</tbody></table></div>
+<p>Sized against our base case, here is base-case gross profit by year. The key contrast is the contract horizon: only Option 1 is multi-year — every 12-month approach (including the customer’s flat $1.50 ask) is uncontracted from Year 2, leaving that gross profit exposed to renegotiation.</p>
+<div class="table-wrap"><table class="data-table">
+<thead><tr>
+<th>Deal Year (base case)</th>
+<th>ACU usage</th>
+<th>GM $ Current rate*</th>
+<th>GM $ $1.50</th>
+<th>GM $ Opt 1 (Long Game)</th>
+<th>GM $ Opt 2 (Compromise)</th>
+</tr></thead><tbody>
+<tr>
+<td>Y1 (Jul ’27–Jun ’28)</td>
+<td>67.2M</td>
+<td>$155.8M</td>
+<td>$61.0M</td>
+<td>$61.0M</td>
+<td>$85.0M</td>
+</tr>
+<tr>
+<td>Y2 (Jul ’28–Jun ’29)</td>
+<td>66.2M</td>
+<td>Not contracted</td>
+<td>Not contracted</td>
+<td>$60.1M</td>
+<td>Not contracted</td>
+</tr>
+<tr>
+<td>Y3 (Jul ’29–Jun ’30)</td>
+<td>63.3M</td>
+<td>Not contracted</td>
+<td>Not contracted</td>
+<td>$57.4M</td>
+<td>Not contracted</td>
+</tr>
+<tr>
+<td>Y4 (Jul ’30–Jun ’31)</td>
+<td>60.3M</td>
+<td>Not contracted</td>
+<td>Not contracted</td>
+<td>$54.8M</td>
+<td>Not contracted</td>
+</tr>
+<tr>
+<td>Y5 (Jul ’31–Jun ’32)</td>
+<td>57.5M</td>
+<td>Not contracted</td>
+<td>Not contracted</td>
+<td>$52.2M</td>
+<td>Not contracted</td>
+</tr>
+</tbody></table></div>
+<h3 class="sub-head">6. Long-term strategy for this account</h3>
+<ul class='bullets'><li>Tie pricing to commitment and growth, not hope.</li><li><strong>Land-and-expand on dormant orgs.</strong> About a third of their orgs are near-dormant. Growth should come from adoption. Pricing is only a small part of the strategy: a modest rate on a fully-adopted account beats a premium rate on a stalling one.</li><li><strong>Token-based costs are volatile —</strong> build protection into the deal. Input costs can move sharply in either direction, so we shouldn’t bet the account’s economics on them holding still. Margin sensitivity analysis (Option 1 at $1.50, Year 1):</li></ul>
+<div class="table-wrap"><table class="data-table">
+<thead><tr>
+<th>If our cost/ACU…</th>
+<th>1-yr gross margin $</th>
+<th>Margin %</th>
+</tr></thead><tbody>
+<tr>
+<td>stays at today’s $0.59</td>
+<td>$61M</td>
+<td>61%</td>
+</tr>
+<tr>
+<td>rises to $1.00</td>
+<td>$34M</td>
+<td>33%</td>
+</tr>
+<tr>
+<td>falls to $0.25</td>
+<td>$84M</td>
+<td>83%</td>
+</tr>
+</tbody></table></div>
+<ul class='bullets'><li><strong>Leadership-owned floor.</strong> Set the absolute lowest rate we will ever offer centrally (e.g., never below $1.00/ACU), not left to individual reps — this account sets the precedent for the whole book.</li><li><strong>Don’t over-rely on contractual lock-in.</strong> If prices fall, customers push to renegotiate regardless of what they signed, and you can’t force consumption — minimums signal intent but don’t substitute for delivered value.</li><li><strong>Build in cost-protection terms.</strong> Retain the right to serve discounted contracts on a constrained, cheaper model set (e.g., lean on lower-cost models like DeepSeek; reserve the most advanced Claude models for higher tiers) so margin is defensible if input costs rise.</li></ul>
+</section>
+
+<section class="exercise" id="exercise-3">
+<div class="exercise-head">
+<span class="exercise-tag">EXERCISE 3</span>
+<h2 class="exercise-title">Pricing: ACU vs. Tokens</h2>
+</div>
+<div class="callout"><span class="callout-label">Recommendation:</span> Keep the ACU — but earn it with product. Don’t move to token-based pricing. This is a product-roadmap decision, not a pricing one.</div>
+<p class="lead"><strong>Summary:</strong> Today the ACU is ~just repackaged token cost (ACU ≈ 1.94 × token cost − 0.39; R² = 0.97) — the “ECU camp,” where a proprietary unit adds little. The answer is not to surrender to tokens, which are commoditizing and would make Devin a replaceable utility, but to invest in product depth that grows the non-LLM share until the ACU is a true value-based unit like Snowflake’s credit or Databricks’ DBU. This is a roadmap decision, not a pricing one.</p>
+<h3 class="sub-head">Today, the ACU is essentially repackaged token cost</h3>
+<p>Across ~118k April sessions, ACU ≈ 1.94 × token cost − 0.39 (R² = 0.97); the fit holds across customers, channels, and workloads, and cost is ~86% tokens / ~14% VM. On current economics the ACU abstracts little that tokens don’t already capture — weak standalone defensibility.</p>
+<figure class="figure"><img src="assets/figure-2-acu-token.png" alt="Figure 2 — billed ACUs track token cost almost exactly across ~118k April sessions (ACU ≈ 1.94 × token cost, R² = 0.97)." loading="lazy" /><figcaption>Figure 2 — billed ACUs track token cost almost exactly across ~118k April sessions (ACU ≈ 1.94 × token cost, R² = 0.97).</figcaption></figure>
+<h3 class="sub-head">But tokens are commoditizing — pricing on them erodes our premium</h3>
+<p>Flagship token prices are in free-fall (GPT-4o −50% in five months; DeepSeek −50%+ in 2025) and converging toward a utility. Billing in tokens anchors our value to a shrinking, directly comparable commodity — inviting price-shopping and making Devin look like a metered LLM reseller rather than a premium platform.</p>
+<h3 class="sub-head">The real question is product, not pricing</h3>
+<p>Keeping the ACU is only defensible if real product work grows the non-LLM share and moves us beyond “a better UI on top of an LLM.” Snowflake and Databricks earned their proprietary units that way; Amazon’s ECU, which didn’t, was retired for vCPU. Pricing should follow that product bet.</p>
+<div class="table-wrap"><table class="data-table">
+<thead><tr>
+<th></th>
+<th>Token-based pricing</th>
+<th>ACU — keep &amp; build into a value unit</th>
+</tr></thead><tbody>
+<tr>
+<td>Pros</td>
+<td><ul class='cell-list'><li>Legible &amp; comparable — the standard customers and Gartner ask for.</li><li>Low-risk today — ACU ≈ 1.94 × token cost − 0.39 (R²=0.97); clean translation exists.</li></ul></td>
+<td><ul class='cell-list'><li>Revenue defensibility — resists token price wars; protects margin as LLM prices fall.</li><li>Captures non-LLM cost — includes the ~14% (and growing) infra wedge.</li><li>More premium product — a value-based platform, not a metered LLM reseller.</li></ul></td>
+</tr>
+<tr>
+<td>Cons</td>
+<td><ul class='cell-list'><li>Price-shopping &amp; margin erosion — GPT-4o −50% in 5 months; DeepSeek −50%+. Invites comparison and constant re-pricing.</li><li>Commoditizes us — ties our value to a shrinking utility.</li></ul></td>
+<td><ul class='cell-list'><li>Opaque today — customers can’t forecast spend; trust gap.</li><li>Unearned so far — currently ~just tokens; needs product to justify.</li></ul></td>
+</tr>
+<tr>
+<td>Precedent</td>
+<td><ul class='cell-list'><li>Amazon — retired its “ECU” for vCPU (2014) — bespoke unit added nothing.</li><li>Twilio — transparent per-message pricing became the moat.</li></ul></td>
+<td>Snowflake (credits) &amp; Databricks (DBU) — proprietary units worked because they abstract real, varied value — the bar we must clear.</td>
+</tr>
+</tbody></table></div>
+<p class="lead"><strong>Bottom line:</strong> Keep the ACU and commit to the product roadmap that justifies it. If we can’t make that investment, we’re an ECU — and tokens would be the honest unit. Track success by re-running this regression quarterly: the non-LLM share should rise well above ~14%.</p>
+</section>
+
+    <footer class="readout-footer">
+      <p>Onsite — GTM Operations · Usage Forecasting · Deal Structuring · Pricing Strategy</p>
+      <p class="muted">Candidate: Lily Shen · June 2026</p>
+    </footer>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <img class="brand-logo footer-logo" src="logo.png" alt="Dimension" width="2478" height="360" />
-        <p>2261 Market Street, #4061<br/>San Francisco, CA 94114</p>
-      </div>
-      <div>
-        <h4>Providers</h4>
-        <a href="#">Become a Provider</a>
-        <a href="#">Provider Portal</a>
-      </div>
-      <div>
-        <h4>Company</h4>
-        <a href="#">Who is Dimension?</a>
-        <a href="#">Careers</a>
-        <a href="#">Blog</a>
-        <a href="#">Company News</a>
-      </div>
-      <div>
-        <h4>Support</h4>
-        <a href="#">Contact us</a>
-        <a href="#">Terms of Service</a>
-        <a href="#">Privacy Policy</a>
-      </div>
-    </div>
-    <div class="container footer-bottom">
-      <p>© 2024 Dimension. All rights reserved.</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+  <script src="readout.js"></script>
 </body>
 </html>

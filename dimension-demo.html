@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Dimension | Tech-enabled Waste Management</title>
+  <meta name="description" content="Insights on waste management, recycling, sustainability and the circular economy from Dimension." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a class="brand" href="#" aria-label="Dimension home">
+        <img class="brand-logo" src="logo.png" alt="Dimension" width="2478" height="360" />
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <a href="#">Services</a>
+        <a href="#">Business</a>
+        <a href="#">Providers</a>
+        <a href="#">Sustainability</a>
+        <a href="#">About</a>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-ghost" href="#">Log In</a>
+        <a class="btn btn-primary" href="#">Book Now</a>
+      </div>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">The Dimension Blog</p>
+        <h1>Smarter waste, <span>a cleaner planet.</span></h1>
+        <p class="hero-sub">Field notes, research and company news on recycling, compliance and the circular economy — from the team rethinking how the world handles waste.</p>
+        <form class="search" role="search" id="searchForm">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          <input type="search" id="searchInput" placeholder="Search articles…" aria-label="Search articles" />
+        </form>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- Featured -->
+      <section class="featured" aria-labelledby="featured-title">
+        <article class="featured-card">
+          <div class="featured-media" style="--g1:#0f5132;--g2:#2f9e6f">
+            <span class="tag tag-light">Company News</span>
+          </div>
+          <div class="featured-body">
+            <h2 id="featured-title"><a href="#">Dimension Selected in Major RFP Contract with State of California for PPE Waste Removal</a></h2>
+            <p>SAN FRANCISCO, CA — Dimension, the tech-enabled waste management company, has been awarded a Master Service Agreement with the State of California through the Department of General Services, providing waste removal services to state and local agencies.</p>
+            <div class="post-meta">
+              <span class="author"><span class="avatar" aria-hidden="true">D</span> Dimension Team</span>
+              <span class="dot" aria-hidden="true">•</span>
+              <time datetime="2024-03-12">Mar 12, 2024</time>
+              <span class="dot" aria-hidden="true">•</span>
+              <span>5 min read</span>
+            </div>
+            <a class="read-link" href="#">Read the announcement <span aria-hidden="true">→</span></a>
+          </div>
+        </article>
+      </section>
+
+      <!-- Filters -->
+      <section class="toolbar" aria-label="Filter articles">
+        <div class="chips" id="chips" role="tablist">
+          <button class="chip is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="chip" data-filter="company" role="tab" aria-selected="false">Company News</button>
+          <button class="chip" data-filter="recycling" role="tab" aria-selected="false">Recycling</button>
+          <button class="chip" data-filter="sustainability" role="tab" aria-selected="false">Sustainability</button>
+          <button class="chip" data-filter="business" role="tab" aria-selected="false">Business</button>
+          <button class="chip" data-filter="guides" role="tab" aria-selected="false">Guides</button>
+        </div>
+        <p class="result-count" id="resultCount" aria-live="polite"></p>
+      </section>
+
+      <!-- Grid -->
+      <section class="grid" id="postGrid" aria-label="Articles">
+        <!-- cards injected by script.js -->
+      </section>
+
+      <p class="empty-state" id="emptyState" hidden>No articles match your search. Try a different term.</p>
+
+      <!-- Newsletter -->
+      <section class="newsletter">
+        <div class="newsletter-inner">
+          <div>
+            <h2>Stay in the loop</h2>
+            <p>Get the latest on recycling, compliance and sustainability — straight to your inbox. No spam, ever.</p>
+          </div>
+          <form class="newsletter-form" id="newsletterForm">
+            <input type="email" placeholder="you@company.com" aria-label="Email address" required />
+            <button class="btn btn-primary" type="submit">Subscribe</button>
+          </form>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <img class="brand-logo footer-logo" src="logo.png" alt="Dimension" width="2478" height="360" />
+        <p>2261 Market Street, #4061<br/>San Francisco, CA 94114</p>
+      </div>
+      <div>
+        <h4>Providers</h4>
+        <a href="#">Become a Provider</a>
+        <a href="#">Provider Portal</a>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="#">Who is Dimension?</a>
+        <a href="#">Careers</a>
+        <a href="#">Blog</a>
+        <a href="#">Company News</a>
+      </div>
+      <div>
+        <h4>Support</h4>
+        <a href="#">Contact us</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2024 Dimension. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
