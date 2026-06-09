@@ -1,6 +1,7 @@
 /* AE Targets dashboard — loads ae_data.json, computes live MTD/pacing from a simulated
    daily curve (built from each account's 4 April weekly buckets; full-month totals exact). */
 let DATA = null, ASOF = 5, SORT = {key:'pacing', dir:-1}, PLAY = null;
+const TODAY = 20;                     // April 20, 2026 — no actuals beyond this; slider/play cap here
 let EDITS = {}, DIRTY = false;       // pending ACU-target edits on the detail page
 const OV_KEY = 'ae_target_overrides';
 
@@ -207,8 +208,9 @@ function renderDetail(ae){
 
 /* ---------------- shared controls ---------------- */
 function setAsof(v){
-  ASOF=+v;
-  const lab='April '+ASOF+', 2026';
+  ASOF=Math.max(1, Math.min(+v, TODAY));
+  let lab='April '+ASOF+', 2026';
+  if(ASOF===TODAY) lab+=' · today';
   const e=document.getElementById('asof-label'); if(e) e.textContent=lab;
   const s=document.getElementById('asof'); if(s) s.value=ASOF;
   const ae=new URLSearchParams(location.search).get('ae');
@@ -217,9 +219,9 @@ function setAsof(v){
 function togglePlay(){
   const btn=document.getElementById('play-btn');
   if(PLAY){ clearInterval(PLAY); PLAY=null; if(btn) btn.textContent='▶'; return; }
-  if(ASOF>=30) ASOF=1;
+  if(ASOF>=TODAY) ASOF=1;
   if(btn) btn.textContent='⏸';
-  PLAY=setInterval(()=>{ if(ASOF>=30){ clearInterval(PLAY); PLAY=null; if(btn) btn.textContent='▶'; return;} setAsof(ASOF+1); },450);
+  PLAY=setInterval(()=>{ if(ASOF>=TODAY){ clearInterval(PLAY); PLAY=null; if(btn) btn.textContent='▶'; return;} setAsof(ASOF+1); },450);
 }
 function initControls(){
   const s=document.getElementById('asof');
@@ -236,7 +238,7 @@ function initControls(){
 }
 async function init(){
   DATA = await (await fetch('ae_data.json')).json();
-  ASOF = DATA.meta.default_asof || 5;
+  ASOF = TODAY;
   applyOverrides();
   initControls();
   const ae=new URLSearchParams(location.search).get('ae');
