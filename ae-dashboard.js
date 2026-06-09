@@ -1,6 +1,8 @@
 /* AE Targets dashboard — loads ae_data.json, computes live MTD/pacing from a simulated
    daily curve (built from each account's 4 April weekly buckets; full-month totals exact). */
 let DATA = null, ASOF = 5, SORT = {key:'pacing', dir:-1}, PLAY = null;
+let EDITS = {}, DIRTY = false;       // pending ACU-target edits on the detail page
+const OV_KEY = 'ae_target_overrides';
 
 const fmtACU = n => n == null ? '—' : Math.round(n).toLocaleString('en-US');
 const fmtUSD = n => n == null ? '—' : '$' + Math.round(n).toLocaleString('en-US');
@@ -74,8 +76,8 @@ function renderRoster(){
   rows.sort((a,b)=> (a[k]==null?-1:b[k]==null?1:(a[k]-b[k]))*SORT.dir || (a.ae<b.ae?-1:1));
   let html='';
   rows.forEach(r=>{
-    html+=`<tr class="ae-row" ondblclick="openAE('${r.ae}')" title="Double-click to open ${r.ae}'s account book">
-      <td class="c-name"><span class="caret">▸</span>${r.ae} <span class="muted">· ${r.n} accts</span></td>
+    html+=`<tr class="ae-row">
+      <td class="c-name"><button class="ae-btn" onclick="openAE('${r.ae}')" title="Open ${r.ae}'s account book">${r.ae}</button> <span class="muted">· ${r.n} accts</span></td>
       <td class="num">${fmtACU(r.march)}</td>
       <td class="num">${fmtACU(r.mtd)}</td>
       <td class="num strong">${fmtACU(r.pace)}</td>
@@ -122,6 +124,46 @@ function markSortHeaders(){
 }
 function openAE(ae){ location.href='ae-detail.html?ae='+ae; }
 
+/* ---------------- editable ACU targets (detail page) ---------------- */
+function applyOverrides(){
+  let ov={}; try{ ov=JSON.parse(localStorage.getItem(OV_KEY)||'{}'); }catch(e){}
+  DATA.accounts.forEach(a=>{ if(ov[a.id]!=null) a.target=ov[a.id]; });
+}
+function startEditTarget(td){
+  if(td.querySelector('input')) return;
+  const id=td.dataset.id, a=DATA.accounts.find(x=>x.id===id); if(!a) return;
+  const prev=a.target;
+  td.innerHTML=`<input class="target-input" type="number" min="0" step="1" value="${Math.round(a.target)}"/>`;
+  const inp=td.querySelector('input'); inp.focus(); inp.select();
+  let done=false;
+  const ae=new URLSearchParams(location.search).get('ae');
+  const commit=()=>{ if(done) return; done=true;
+    let v=parseFloat(inp.value); if(isNaN(v)||v<0) v=0; v=Math.round(v);
+    if(v!==Math.round(prev)){ a.target=v; EDITS[id]=v; DIRTY=true; }
+    renderDetail(ae); updateSaveBtn();
+  };
+  const cancel=()=>{ if(done) return; done=true; renderDetail(ae); };
+  inp.addEventListener('keydown',e=>{
+    if(e.key==='Enter'){ e.preventDefault(); inp.blur(); }
+    else if(e.key==='Escape'){ e.preventDefault(); cancel(); }
+  });
+  inp.addEventListener('blur',commit);
+  inp.addEventListener('click',e=>e.stopPropagation());
+}
+function updateSaveBtn(){
+  const b=document.getElementById('save-btn'); if(!b) return;
+  b.style.display = DIRTY ? 'inline-block' : 'none';
+  b.textContent='Save'; b.disabled=false;
+}
+function saveEdits(){
+  let ov={}; try{ ov=JSON.parse(localStorage.getItem(OV_KEY)||'{}'); }catch(e){}
+  Object.assign(ov, EDITS);
+  localStorage.setItem(OV_KEY, JSON.stringify(ov));
+  EDITS={}; DIRTY=false;
+  const b=document.getElementById('save-btn');
+  if(b){ b.textContent='Saved ✓'; b.disabled=true; setTimeout(()=>{ if(!DIRTY) b.style.display='none'; }, 1400); }
+}
+
 /* ---------------- DETAIL ---------------- */
 const PHASE_ORDER=['Demo','POC','UAT','Production','Internal','Archived','Unknown'];
 function renderDetail(ae){
@@ -154,7 +196,7 @@ function renderDetail(ae){
         <td class="num">${fmtACU(a.march)}</td>
         <td class="num">${fmtACU(m.mtd)}</td>
         <td class="num strong">${fmtACU(m.pace)}</td>
-        <td class="num">${fmtACU(a.target)}</td>
+        <td class="num c-target" data-id="${a.id}" onclick="startEditTarget(this)" title="Click to edit ACU target">${fmtACU(a.target)}</td>
         <td class="num">${pill(m.goal)}</td>
         <td class="num">${fmtPrice(a.price)}</td>
         <td class="num">${fmtUSD(m.revMtd)}</td></tr>`;
@@ -183,6 +225,7 @@ function initControls(){
   const s=document.getElementById('asof');
   if(s){ s.value=ASOF; s.addEventListener('input',()=>setAsof(s.value)); }
   const b=document.getElementById('play-btn'); if(b) b.addEventListener('click',togglePlay);
+  const sv=document.getElementById('save-btn'); if(sv) sv.addEventListener('click',saveEdits);
   document.querySelectorAll('th[data-key]').forEach(th=>{
     th.addEventListener('click',()=>{
       const k=th.dataset.key;
@@ -194,6 +237,7 @@ function initControls(){
 async function init(){
   DATA = await (await fetch('ae_data.json')).json();
   ASOF = DATA.meta.default_asof || 5;
+  applyOverrides();
   initControls();
   const ae=new URLSearchParams(location.search).get('ae');
   if(ae) renderDetail(ae); else renderRoster();

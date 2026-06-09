@@ -21,6 +21,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-s
   margin:0 8px;text-decoration:none}
 .sb-item:hover{background:#eef1f6}
 .sb-item.active{background:var(--sel);color:var(--accent);font-weight:600}
+.sb-static{color:var(--muted);cursor:default}
+.sb-static:hover{background:none}
 
 /* Main */
 .main{flex:1;min-width:0;display:flex;flex-direction:column}
@@ -76,9 +78,18 @@ tbody td{padding:9px 14px;border-bottom:1px solid #f1f3f7;text-align:right;white
 .num{font-variant-numeric:tabular-nums}
 .num.strong{font-weight:700}
 .muted{color:var(--muted);font-weight:400}
-.caret{color:var(--muted);font-size:10px;margin-right:3px;display:inline-block;width:9px}
-.ae-row{cursor:pointer}
-.ae-row:hover{background:var(--sel)}
+.ae-row:hover{background:#fafbff}
+.ae-btn{font:inherit;font-weight:600;color:var(--accent);background:var(--sel);
+  border:1px solid #d4e0ff;border-radius:7px;padding:4px 14px;cursor:pointer;line-height:1.4}
+.ae-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.ae-btn:active{transform:translateY(1px)}
+/* editable ACU target cell */
+.c-target{cursor:pointer;border-radius:6px;position:relative}
+.c-target:hover{background:var(--sel);box-shadow:inset 0 0 0 1px #d4e0ff}
+.c-target:hover::after{content:'\270E';position:absolute;right:4px;top:50%;transform:translateY(-50%);
+  font-size:10px;color:var(--accent)}
+.target-input{width:88px;text-align:right;font:inherit;font-variant-numeric:tabular-nums;
+  border:1px solid var(--accent);border-radius:6px;padding:3px 6px;outline:none}
 .total-row td{background:#f3f6ff;font-weight:700;border-top:2px solid #dfe6f5;border-bottom:none}
 .grp-row td{background:#f6f8fb;font-weight:700;border-top:1px solid var(--line)}
 .acct-row:hover{background:#fafbff}
