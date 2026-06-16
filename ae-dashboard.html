@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>AE Targets — Monthly Performance · Cognition</title>
+<link rel="stylesheet" href="ae-dashboard.css"/>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="sb-brand"><img src="assets/cognition-wordmark.png" alt="Cognition"/></div>
+    <div class="sb-group">Sales</div>
+    <a class="sb-item active" href="ae-dashboard.html">Dashboard</a>
+    <span class="sb-item sb-static">My commission</span>
+  </aside>
+  <div class="main">
+    <div class="topbar">
+      <div>
+        <div class="crumbs">Sales</div>
+        <div class="h-title">AE Targets — Monthly Performance</div>
+      </div>
+      <div class="topbar-right">
+        <button class="btn">Export</button>
+        <button class="btn">Filters</button>
+      </div>
+    </div>
+
+    <div class="controls">
+      <div class="ctl">
+        <label>Period</label>
+        <div class="daterange">April 1 – April 30, 2026</div>
+      </div>
+      <div class="ctl">
+        <label>As of (play the month)</label>
+        <div class="asof-wrap">
+          <button class="play-btn" id="play-btn" title="Play back through the month">▶</button>
+          <input id="asof" type="range" min="1" max="20" value="20"/>
+          <span class="asof-badge" id="asof-label">April 20, 2026</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="kpis">
+      <div class="kpi"><div class="k-label">Team Pacing (ACU)</div><div class="k-val" id="kpi-pace">—</div><div class="k-sub">projected month-end</div></div>
+      <div class="kpi"><div class="k-label">Team Target (ACU)</div><div class="k-val" id="kpi-target">—</div><div class="k-sub">forecast × stage stretch</div></div>
+      <div class="kpi"><div class="k-label">ACU Goal %</div><div class="k-val" id="kpi-goal">—</div><div class="k-sub">pacing ÷ target</div></div>
+      <div class="kpi"><div class="k-label">Revenue MTD</div><div class="k-val" id="kpi-rev">—</div><div class="k-sub">ACU MTD × unit price</div></div>
+    </div>
+
+    <div class="legend">
+      <span>ACU Goal %:</span>
+      <span class="pill g-green">≥100%</span> on / above pace
+      <span class="pill g-amber">85–99%</span> watch
+      <span class="pill g-red">&lt;85%</span> behind
+    </div>
+
+    <div class="tablewrap">
+      <div class="card">
+        <table>
+          <thead>
+            <tr>
+              <th data-key="ae">AE</th>
+              <th data-key="march">Last Month ACU</th>
+              <th data-key="mtd">ACU MTD</th>
+              <th data-key="pace">ACU Pacing</th>
+              <th data-key="target">ACU Target</th>
+              <th data-key="goal">ACU Goal %</th>
+              <th data-key="price">Unit Pricing</th>
+              <th data-key="revMtd">Revenue MTD</th>
+              <th>Pacing vs Target</th>
+            </tr>
+          </thead>
+          <tbody id="roster-body"></tbody>
+        </table>
+      </div>
+      <p class="note"><span class="hint">Click an AE button</span> to open their account book (grouped by Deal Phase).
+        Targets in ACUs (forecast × stage stretch); Revenue MTD = ACU MTD × effective unit price.
+        Drag the slider or press ▶ to play the month — MTD &amp; pacing update live.</p>
+    </div>
+  </div>
+</div>
+<script src="ae-dashboard.js"></script>
+</body>
+</html>
